@@ -58,9 +58,12 @@
                   ><%= todo.action %></label
                 >
               </div>
-              <span class="badge bg-danger rounded-pill" style="cursor: pointer"
-                ><i class="bi bi-trash2-fill"></i
-              ></span>
+              <a href="/remove/<%= todo.action %>">
+                <span
+                  class="badge bg-danger rounded-pill"
+                  style="cursor: pointer"
+                  ><i class="bi bi-trash2-fill"></i></span
+              ></a>
             </li>
             <% }); } %>
           </ul>

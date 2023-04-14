@@ -52,8 +52,8 @@ export const removeTodo = (action) => {
   );
 
   if (todos.length === newTodos.length) {
-    console.log(action + " Not Found!");
+    return false;
   }
   fs.writeFileSync(repoFile, JSON.stringify(newTodos));
-  console.log(action + " deleted");
+  return true;
 };

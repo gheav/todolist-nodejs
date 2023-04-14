@@ -16,6 +16,11 @@ app.post("/", (req, res) => {
   res.redirect("/");
 });
 
+app.get("/remove/:action", (req, res) => {
+  todos.removeTodo(req.params.action);
+  res.redirect("/");
+});
+
 app.listen(port, () => {
   console.log(`Todolist app listening on port ${port}`);
 });
