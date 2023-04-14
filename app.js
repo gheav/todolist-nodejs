@@ -1,8 +1,8 @@
 import express from "express";
-import * as todos from "./todos.js";
-
+import * as todos from "./services/todos.js";
 const app = express();
 const port = 3000;
+todos.init();
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
   res.render("index", {

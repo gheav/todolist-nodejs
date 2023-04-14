@@ -1,16 +1,18 @@
 // Import Core Modules
 import * as fs from "fs";
 
-const repoDirectory = "./repository";
-const repoFile = "./repository/todos.json";
+const repoDirectory = "./repositories";
+const repoFile = "./repositories/todos.json";
 
-if (!fs.existsSync(repoDirectory)) {
-  fs.mkdirSync(repoDirectory);
-}
+export const init = () => {
+  if (!fs.existsSync(repoDirectory)) {
+    fs.mkdirSync(repoDirectory);
+  }
 
-if (!fs.existsSync(repoFile)) {
-  fs.writeFileSync(repoFile, "[]", "utf-8");
-}
+  if (!fs.existsSync(repoFile)) {
+    fs.writeFileSync(repoFile, "[]", "utf-8");
+  }
+};
 
 export const insertTodo = async (action) => {
   const todo = { action: action, status: 0, createdAt: Date.now() };
