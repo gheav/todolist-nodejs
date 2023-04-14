@@ -22,8 +22,7 @@ export const insertTodo = async (action) => {
 
 export const showTodo = () => {
   const repo = fs.readFileSync(repoFile, "utf-8");
-  const todos = JSON.parse(repo);
-  return todos;
+  return JSON.parse(repo);
 };
 
 export const checkTodo = (action) => {
