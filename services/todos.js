@@ -15,7 +15,7 @@ export const init = () => {
 };
 
 export const insertTodo = async (action) => {
-  const todo = { action: action, status: 0, createdAt: Date.now() };
+  const todo = { action: action.trim(), status: 0, createdAt: Date.now() };
   const repo = fs.readFileSync(repoFile, "utf-8");
   const todos = JSON.parse(repo);
   todos.push(todo);
@@ -27,7 +27,7 @@ export const showTodo = () => {
   return JSON.parse(repo);
 };
 
-export const checkTodo = (action) => {
+export const checkTodo = (action, status) => {
   const repo = fs.readFileSync(repoFile, "utf-8");
   const todos = JSON.parse(repo);
   const newTodos = todos.filter(
@@ -35,12 +35,11 @@ export const checkTodo = (action) => {
   );
 
   if (todos.length === newTodos.length) {
-    console.log(action + " Not Found!");
+    return false;
   }
-  newTodos.push({ action: action, status: 1, createdAt: Date.now() });
+  newTodos.push({ action: action, status: status, createdAt: Date.now() });
   fs.writeFileSync(repoFile, JSON.stringify(newTodos));
-
-  console.log(action + " checked");
+  return true;
 };
 
 export const removeTodo = (action) => {

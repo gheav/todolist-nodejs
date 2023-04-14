@@ -15,6 +15,9 @@ app.post("/", (req, res) => {
   todos.insertTodo(req.body.action);
   res.redirect("/");
 });
+app.post("/checked", (req, res) => {
+  todos.checkTodo(req.body.action, req.body.status);
+});
 
 app.get("/remove/:action", (req, res) => {
   todos.removeTodo(req.params.action);
