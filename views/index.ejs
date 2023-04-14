@@ -23,20 +23,26 @@
       <h1 class="text-center"><%= title %></h1>
       <div class="d-flex justify-content-center mt-3">
         <div class="col-6">
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="What is your main focus for today ?"
-              aria-label="What is your main focus for today ?"
-              aria-describedby="button-addon2" />
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="button-addon2">
-              &emsp; Save &emsp;
-            </button>
-          </div>
+          <form action="/" method="post">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="What is your main focus for today ?"
+                aria-label="What is your main focus for today ?"
+                aria-describedby="button-save"
+                name="action"
+                id="input-action"
+                autocomplete="off"
+                required />
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                id="button-save">
+                &emsp; Save &emsp;
+              </button>
+            </div>
+          </form>
           <hr />
           <ul class="list-group">
             <% if(todos.length > 0){ %> <% todos.forEach(todo => { %>
