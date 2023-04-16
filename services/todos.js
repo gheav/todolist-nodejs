@@ -1,10 +1,10 @@
 // Import Core Modules
-import * as fs from "fs";
+const fs = require("fs");
 
 const repoDirectory = "./repositories";
 const repoFile = "./repositories/todos.json";
 
-export const init = () => {
+const init = () => {
   if (!fs.existsSync(repoDirectory)) {
     fs.mkdirSync(repoDirectory);
   }
@@ -14,7 +14,7 @@ export const init = () => {
   }
 };
 
-export const insertTodo = async (action) => {
+const insertTodo = async (action) => {
   const todo = { action: action.trim(), status: 0, createdAt: Date.now() };
   const repo = fs.readFileSync(repoFile, "utf-8");
   const todos = JSON.parse(repo);
@@ -22,12 +22,12 @@ export const insertTodo = async (action) => {
   fs.writeFileSync(repoFile, JSON.stringify(todos));
 };
 
-export const showTodo = () => {
+const showTodo = () => {
   const repo = fs.readFileSync(repoFile, "utf-8");
   return JSON.parse(repo);
 };
 
-export const checkTodo = (action, status) => {
+const checkTodo = (action, status) => {
   const repo = fs.readFileSync(repoFile, "utf-8");
   const todos = JSON.parse(repo);
   const newTodos = todos.filter(
@@ -42,7 +42,7 @@ export const checkTodo = (action, status) => {
   return true;
 };
 
-export const removeTodo = (action) => {
+const removeTodo = (action) => {
   const repo = fs.readFileSync(repoFile, "utf-8");
   const todos = JSON.parse(repo);
 
@@ -56,3 +56,4 @@ export const removeTodo = (action) => {
   fs.writeFileSync(repoFile, JSON.stringify(newTodos));
   return true;
 };
+module.exports = { init, insertTodo, showTodo, checkTodo, removeTodo };
